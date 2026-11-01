@@ -32,7 +32,12 @@ void sound_init(void) {
     if (audsrv_init() != 0) return;
 
     /* S16 stereo at 22 kHz */
-    audsrv_set_format(AUDSRV_FMT_S16_STEREO, RATE);
+    struct audsrv_fmt_t fmt;
+    fmt.bits = 16;
+    fmt.freq = RATE;
+    fmt.channels = 2;
+    audsrv_set_format(&fmt);
+    
     audsrv_set_volume(80);
 
     /* ---- Build the ding: two short tones, bell-like envelope ---- */
