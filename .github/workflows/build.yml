@@ -17,18 +17,18 @@ jobs:
         run: |
           export PS2DEV=/usr/local/ps2dev
           export PS2SDK=$PS2DEV/ps2sdk
+          export GSKIT=$PS2DEV/gsKit
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
           git clone https://github.com/ps2dev/gsKit.git /tmp/gsKit
           cd /tmp/gsKit
           make
           make install
-          # کپی دستی فایل‌های ساخته شده به مسیر پیش‌فرض PS2SDK
-          find /tmp/gsKit -name "*.a" -exec cp {} $PS2SDK/ports/lib/ \;
 
       - name: Build Game
         run: |
           export PS2DEV=/usr/local/ps2dev
           export PS2SDK=$PS2DEV/ps2sdk
+          export GSKIT=$PS2DEV/gsKit
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
           make clean
           make
