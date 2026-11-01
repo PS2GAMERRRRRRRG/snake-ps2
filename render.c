@@ -60,10 +60,6 @@ static void rect(int x, int y, int w, int h, u64 color) {
     gsKit_prim_sprite(gsGlobal, x, y, x + w, y + h, 1, color);
 }
 
-static void tri(int x1, int y1, int x2, int y2, int x3, int y3, u64 color) {
-    gsKit_prim_triangle(gsGlobal, x1, y1, x2, y2, x3, y3, 1, color);
-}
-
 /* ---- Init ---- */
 void init_gs(void) {
     gsGlobal = gsKit_init_global();
@@ -282,16 +278,16 @@ void render_settings(void) {
 
 /* ---- Master render (called every frame) ---- */
 void render_frame(void) {
-static u64 last = 0;
-static int first_frame = 1;
+    static u64 last = 0;
+    static int first_frame = 1;
 
-u64 now = GetTimerSystemTime();
-if (!first_frame) {
-    u64 diff = now - last;
-    g_intro_time += (double)diff / (double)kTIME_ONE_SECOND;
-}
-first_frame = 0;
-last = now;
+    u64 now = GetTimerSystemTime();
+    if (!first_frame) {
+        u64 diff = now - last;
+        g_intro_time += (double)diff / 294912000.0;
+    }
+    first_frame = 0;
+    last = now;
 
     switch (state) {
         case ST_INTRO:
