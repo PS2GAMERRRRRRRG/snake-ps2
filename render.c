@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <timer.h>
 
 /* ---- Screen & layout ---- */
 #define SCREEN_W 640
@@ -281,14 +282,16 @@ void render_settings(void) {
 
 /* ---- Master render (called every frame) ---- */
 void render_frame(void) {
-    static u64 last = 0;
+static u64 last = 0;
+static int first_frame = 1;
 
-    u64 now = GetTimerSystemTime();
-    if (last != 0) {
-        u64 diff = now - last;
-        g_intro_time += (double)diff / (double)kTIME_ONE_SECOND;
-    }
-    last = now;
+u64 now = GetTimerSystemTime();
+if (!first_frame) {
+    u64 diff = now - last;
+    g_intro_time += (double)diff / (double)kTIME_ONE_SECOND;
+}
+first_frame = 0;
+last = now;
 
     switch (state) {
         case ST_INTRO:
