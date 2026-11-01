@@ -22,8 +22,8 @@ jobs:
           cd /tmp/gsKit
           make
           make install
-          # کپی دستی کتابخانه به مسیر پیش‌فرض PS2SDK
-          cp libgsKit.a $PS2SDK/ports/lib/ || cp lib/libgsKit.a $PS2SDK/ports/lib/ || echo "Warning: libgsKit.a not found to copy"
+          # کپی دستی فایل‌های ساخته شده به مسیر پیش‌فرض PS2SDK
+          find /tmp/gsKit -name "*.a" -exec cp {} $PS2SDK/ports/lib/ \;
 
       - name: Build Game
         run: |
