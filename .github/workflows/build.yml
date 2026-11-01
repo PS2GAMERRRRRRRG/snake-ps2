@@ -8,8 +8,7 @@ jobs:
     container: ps2dev/ps2dev:latest
     steps:
       - name: Install dependencies
-        run: |
-          apk add build-base git zip cmake pkgconfig
+        run: apk add build-base git zip cmake pkgconfig
 
       - uses: actions/checkout@v4
 
@@ -18,8 +17,7 @@ jobs:
           export PS2DEV=/usr/local/ps2dev
           export PS2SDK=$PS2DEV/ps2sdk
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
-          # استفاده از نسخه پایدار و تگ شده (به جای آخرین نسخه)
-          git clone -b v1.2 https://github.com/ps2dev/gsKit.git /tmp/gsKit
+          git clone https://github.com/ps2dev/gsKit.git /tmp/gsKit
           cd /tmp/gsKit
           make
           make install
