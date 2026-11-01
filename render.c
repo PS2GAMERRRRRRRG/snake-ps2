@@ -284,7 +284,10 @@ void render_frame(void) {
     u64 now = GetTimerSystemTime();
     if (!first_frame) {
         u64 diff = now - last;
-        g_intro_time += (double)diff / 294912000.0;
+        /* محافظ: اگر اختلاف زمان غیرعادی بود (مثلا برای شبیه‌ساز)، نادیده بگیر */
+        if (diff < 294912000ULL) { /* کمتر از 1 ثانیه */
+            g_intro_time += (double)diff / 294912000.0;
+        }
     }
     first_frame = 0;
     last = now;
