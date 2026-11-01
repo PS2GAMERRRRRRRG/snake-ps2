@@ -1,0 +1,19 @@
+name: Build PS2 ELF
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ps2dev/ps2dev:latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: |
+          make clean
+          make
+      - name: Upload ELF
+        uses: actions/upload-artifact@v4
+        with:
+          name: snake-ps2-elf
+          path: snake_ps2.elf
