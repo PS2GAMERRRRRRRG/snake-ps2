@@ -17,9 +17,9 @@ jobs:
         run: |
           export PS2DEV=/usr/local/ps2dev
           export PS2SDK=$PS2DEV/ps2sdk
-          export GSKIT=$PS2DEV/gsKit
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
-          git clone https://github.com/ps2dev/gsKit.git /tmp/gsKit
+          # استفاده از نسخه پایدار و تگ شده (به جای آخرین نسخه)
+          git clone -b v1.2 https://github.com/ps2dev/gsKit.git /tmp/gsKit
           cd /tmp/gsKit
           make
           make install
@@ -28,7 +28,6 @@ jobs:
         run: |
           export PS2DEV=/usr/local/ps2dev
           export PS2SDK=$PS2DEV/ps2sdk
-          export GSKIT=$PS2DEV/gsKit
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
           make clean
           make
