@@ -23,7 +23,6 @@ int main(int argc, char *argv[]) {
     /* Init PS2 subsystems */
     SifInitRpc(0);
     SifLoadFileInit();
-    SifInitIopHeap();
 
     /* Init graphics, controller, sound, save */
     init_gs();
