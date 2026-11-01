@@ -19,6 +19,9 @@ jobs:
           export PS2SDK=$PS2DEV/ps2sdk
           export GSKIT=$PS2DEV/gsKit
           export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
+          # به صورت دستی مسیرهای هدر و کتابخانه gsKit را به متغیرهای محیطی make اضافه کنید
+          export EE_CFLAGS="-I$PS2DEV/gsKit/include -I$PS2SDK/ports/include"
+          export EE_LDFLAGS="-L$PS2DEV/gsKit/lib -L$PS2SDK/ports/lib"
           make clean
           make
 
