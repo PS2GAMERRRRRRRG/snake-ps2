@@ -4,6 +4,7 @@
 #include <loadfile.h>
 #include <timer.h>
 #include <stdlib.h>
+#include <gsKit.h>       /* اضافه شد برای دسترسی به gsGlobal */
 
 #include "game.h"
 #include "render.h"
@@ -26,6 +27,10 @@ int main(int argc, char *argv[]) {
 
     /* Init graphics, controller, sound, save */
     init_gs();
+    
+    /* اختصاص 4 مگابایت حافظه برای بافر گرافیک */
+    gsGlobal->VRAM = 4 * 1024 * 1024; 
+
     init_pad();
     sound_init();
     save_load_hiscore(g_hi);
@@ -118,4 +123,4 @@ int main(int argc, char *argv[]) {
     save_store_hiscore(g_hi);
     sound_stop();
     return 0;
-}
+}}
