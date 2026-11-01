@@ -1,6 +1,7 @@
 EE_BIN   = snake_ps2.elf
 EE_OBJS  = main.o game.o render.o input.o font.o sound.o save.o
 
+# مسیرهای اضافه برای پیدا کردن gsKit
 EE_CFLAGS = -O2 -G0 -Wall -D_USE_MATH_DEFINES -I$(PS2DEV)/gsKit/include -I$(PS2SDK)/ports/include
 EE_LDFLAGS = -L$(PS2DEV)/gsKit/lib -L$(PS2SDK)/ports/lib
 
