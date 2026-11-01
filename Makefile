@@ -7,8 +7,8 @@ EE_CFLAGS = -O2 -G0 -Wall -D_USE_MATH_DEFINES -I$(PS2DEV)/gsKit/include -I$(PS2S
 # مسیرهای جستجوی کتابخانه‌ها
 EE_LDFLAGS = -L$(PS2DEV)/gsKit/lib -L$(PS2SDK)/ports/lib -L$(PS2SDK)/ee/lib
 
-# نام کتابخانه باید با حروف کوچک باشد: -lgskit
-EE_LIBS  = -lpad -laudsrv -lmc -lgskit -ldraw -lgraph -ldma -lmath3d -lm -lc
+# اضافه شدن dmaKit به لیست کتابخانه‌ها
+EE_LIBS  = -lpad -laudsrv -lmc -lgskit -ldraw -lgraph -ldma -ldmaKit -lmath3d -lm -lc
 
 all: $(EE_BIN)
 
