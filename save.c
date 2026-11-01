@@ -5,6 +5,7 @@
 #include <tamtypes.h>
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>   /* <--- این خط اضافه شد برای O_RDONLY و O_WRONLY */
 
 /* Memory card paths */
 #define MC_SLOT     0                 /* mc0: -> slot 1 */
